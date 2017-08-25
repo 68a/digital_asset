@@ -9,7 +9,7 @@ def close_db(conn):
     
 def read_settings_table(conn):
     c = conn.cursor()
-    sql = 'select cny_rate, price_diff_on, price_diff_value, price_minus_diff_vaues from settings'
+    sql = 'select cny_rate, price_diff_on, price_diff_value, price_minus_diff_value from settings'
     c.execute(sql)
 
     ret = c.fetchall()
