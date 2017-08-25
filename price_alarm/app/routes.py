@@ -52,7 +52,7 @@ def settings():
     rate = settings[0] [0]
     db_price_diff_on = settings[0] [1]
     db_price_diff_value = settings[0] [2]
-    db_price_diff_value = settings[0] [3]
+    db_price_minus_diff_value = settings[0] [3]
     form.setValue (rate, db_price_diff_on, db_price_diff_value, db_price_minus_diff_value)
     return render_template('settings.html', form=form)
   
