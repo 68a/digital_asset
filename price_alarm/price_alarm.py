@@ -27,6 +27,7 @@ def read_settings ():
     global g_cny_rate
     global g_diff_on
     global g_diff_value
+    global g_minus_diff_value
     
     conn = open_db (g_db_file)
     settings = read_settings_table (conn)
@@ -88,7 +89,8 @@ def get_exchanger_diff (exchanger, pair, cny_rate):
     return check_str, diff
     
 
-def check_diff_price(cny_rate, min_diff):
+def check_diff_price(cny_rate, min_diff, minus_diff_value):
+
     base_exchangers_pairs = [ {'name':'bitstamp', 'pairs': ['btc', 'ltc']}]
     target_exchangers =[ {'name': 'yunbi', 'pairs' :[ 'btc', 'ltc', 'eth']},
                           {'name': 'chbtc', 'pairs' : ['btc', 'ltc']} ]
@@ -111,6 +113,7 @@ def check_diff_price(cny_rate, min_diff):
 
         for d in diff_list:
             print('->', d[1])
+            print('min_diff', min_diff, 'minus_diff_value', minus_diff_value)
             if d [1] > min_diff or d [1] < g_minus_diff_value:
                 print('>>>', d[0])
                 send_email(d[0])                
@@ -121,12 +124,12 @@ def check_diff_price(cny_rate, min_diff):
         traceback.print_exc()
 
 def watch_price ():
-    
+    global g_cny_rate, g_diff_value, g_minus_diff_value
     wait_time = 60 * 2
     while True:
         read_settings ()
         if g_diff_on == 1:
-            check_diff_price (g_cny_rate, g_diff_value)
+            check_diff_price (g_cny_rate, g_diff_value, g_minus_diff_value)
         sleep (wait_time)
 
 if __name__ == '__main__':
