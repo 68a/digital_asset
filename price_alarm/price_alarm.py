@@ -1,6 +1,5 @@
 import traceback
 import time
-#import pytz
 import requests
 import sys
 import datetime
@@ -21,6 +20,7 @@ receiver_email = ''
 g_cny_rate = 6.65
 g_diff_on = 1
 g_diff_value = 4.0
+g_minus_diff_value = -2.0
 g_db_file = './app/data.db'
 
 def read_settings ():
@@ -110,7 +110,7 @@ def check_diff_price(cny_rate, min_diff):
 
         for d in diff_list:
             print('->', d[1])
-            if d [1] > min_diff or d [1] < 0:
+            if d [1] > min_diff or d [1] < g_minus_diff_value:
                 print('>>>', d[0])
                 send_email(d[0])                
         
