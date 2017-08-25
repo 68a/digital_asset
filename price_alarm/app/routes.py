@@ -33,6 +33,7 @@ def settings():
           form.cny_rate.data,
           form.price_diff_on.data,
           form.price_diff_value.data,
+          form.price_minus_diff_value.data,
         )
       print (data)
       conn = open_db (g_db_file)
