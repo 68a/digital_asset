@@ -114,7 +114,7 @@ def check_diff_price(cny_rate, min_diff, minus_diff_value):
         for d in diff_list:
             print('->', d[1])
             print('min_diff', min_diff, 'minus_diff_value', minus_diff_value)
-            if d [1] > min_diff or d [1] < g_minus_diff_value:
+            if d [1] > min_diff or d [1] < minus_diff_value:
                 print('>>>', d[0])
                 send_email(d[0])                
         
