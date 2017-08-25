@@ -20,7 +20,7 @@ receiver_email = ''
 g_cny_rate = 6.65
 g_diff_on = 1
 g_diff_value = 4.0
-g_minus_diff_value = -2.0
+g_minus_diff_value = 2.0
 g_db_file = './app/data.db'
 
 def read_settings ():
@@ -35,6 +35,7 @@ def read_settings ():
     g_cny_rate = float (settings [0] [0]) 
     g_diff_on = settings [0] [1]
     g_diff_value = float (settings [0] [2])
+    g_minus_diff_value = - float (settings [0] [3])
     
 def get_config():
     global sender_email, sender_email_password, receiver_email
