@@ -15,16 +15,19 @@
     {% endfor %}
  
  
-    <form class = "form-group" action="{{ url_for('settings') }}" method=post>
+    <form action="{{ url_for('settings') }}" method=post>
 
       {{ form.csrf }}
-      
-      {{ form.cny_rate.label }}      {{ form.cny_rate }}
- 
-      {{ form.price_diff_on.label }}      {{ form.price_diff_on }}
- 
+      <div  class = "form-group">      
+	{{ form.cny_rate.label }}
+	{{ form.cny_rate }}
+      </div>
+      <div  class = "form-group">      
+	{{ form.price_diff_on.label }}      {{ form.price_diff_on }}
+	</div>
+      <div  class = "form-group">      
       {{ form.price_diff_value.label }}      {{ form.price_diff_value }}
-
+      </div>
 
       <input type="submit" value="Go" />
     </form>
