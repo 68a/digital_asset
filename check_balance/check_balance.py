@@ -1,5 +1,4 @@
 import time
-#import pytz
 import requests
 import sys
 import datetime
