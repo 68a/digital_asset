@@ -1,0 +1,33 @@
+<link href="{{url_for("static",filename="css/main.css") }}" rel="stylesheet" type="text/css"/>
+{% extends "bootstrap/base.html" %}
+{% block title %}数字货币价格监视器设置{% endblock %}
+
+{% block content %}
+  <h2>数字货币价格监视器设置</h2>
+ 
+  {% if success %}
+    <p>Success</p>
+ 
+  {% else %}
+ 
+    {% for message in form.cny_rate.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+ 
+ 
+    <form class = "form-group" action="{{ url_for('settings') }}" method=post>
+
+      {{ form.csrf }}
+      
+      {{ form.cny_rate.label }}      {{ form.cny_rate }}
+ 
+      {{ form.price_diff_on.label }}      {{ form.price_diff_on }}
+ 
+      {{ form.price_diff_value.label }}      {{ form.price_diff_value }}
+
+
+      <input type="submit" value="Go" />
+    </form>
+ 
+  {% endif %}
+{% endblock %}
