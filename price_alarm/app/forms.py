@@ -6,7 +6,7 @@ class SettingsForm (Form):
 
   price_diff_on = BooleanField ('差价报警开关')
   price_diff_value = FloatField ('差价高于以下比例报警（百分比）')
-  price_minus_diff_value = FloatField ('差价低于以下比例报警（负百分比）')
+  price_minus_diff_value = FloatField ('差价倒挂以下比例报警（负百分比）')
 
   def setValue ( self, in_cny_rate, in_price_diff_on, in_price_diff_value, in_price_minus_diff_value):
 

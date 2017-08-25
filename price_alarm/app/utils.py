@@ -9,7 +9,7 @@ def close_db(conn):
     
 def read_settings_table(conn):
     c = conn.cursor()
-    sql = 'select cny_rate, price_diff_on, price_diff_value from settings'
+    sql = 'select cny_rate, price_diff_on, price_diff_value, price_minus_diff_vaues from settings'
     c.execute(sql)
 
     ret = c.fetchall()
@@ -22,7 +22,8 @@ def update_settings_table(conn, data):
     sql = """update settings 
              set cny_rate = ?, 
              price_diff_on = ?, 
-             price_diff_value = ?
+             price_diff_value = ?,
+             price_minus_diff_value = ?
              """
     c.execute(sql, data)
     conn.commit()
@@ -32,7 +33,8 @@ def create_db(db_file):
     id integer PRIMARY KEY,
     cny_rate real NOT NULL,
     price_diff_on booleen NOT NULL,
-    price_diff_value real NOT NULL
+    price_diff_value real NOT NULL,
+    price_minus_diff_value real NOT NULL
     ); """
     conn = connect(db_file)
     c = conn.cursor()
@@ -42,11 +44,14 @@ def create_db(db_file):
                  id ,
                  cny_rate ,
                  price_diff_on ,
-                 price_diff_value  )
+                 price_diff_value,
+                 price_minus_diff_value
+                 )
                 values(0,
                  6.9,
                  1,
-                 10.0
+                 10.0,
+                 2.0
                 )
            """
         c.execute(sql)
